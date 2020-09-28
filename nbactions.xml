@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-runspring</actionName>
+            <displayName>runspring</displayName>
+            <goals>
+                <goal>spring-boot:run</goal>
+            </goals>
+            <properties>
+                <spring.profile.active>application.properties</spring.profile.active>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Run Spring Boot</actionName>
+            <displayName>Run Spring Boot</displayName>
+            <goals>
+                <goal>spring-boot:run</goal>
+            </goals>
+            <properties>
+                <spring.profile.active>application.properties</spring.profile.active>
+            </properties>
+        </action>
+    </actions>
