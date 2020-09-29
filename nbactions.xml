@@ -20,4 +20,24 @@
                 <spring.profile.active>application.properties</spring.profile.active>
             </properties>
         </action>
+        <action>
+            <actionName>CUSTOM-DAT TEN</actionName>
+            <displayName>DAT TEN</displayName>
+            <goals>
+                <goal>spring-boot:run</goal>
+            </goals>
+            <properties>
+                <spring.profile.active>application.properties</spring.profile.active>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-dat ten</actionName>
+            <displayName>dat ten</displayName>
+            <goals>
+                <goal>spring-boot:run</goal>
+            </goals>
+            <properties>
+                <spring.profile.active>application.properties</spring.profile.active>
+            </properties>
+        </action>
     </actions>
