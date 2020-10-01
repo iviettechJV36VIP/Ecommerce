@@ -7,10 +7,15 @@ package nhattrung.com.ecommerce.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,28 +28,52 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Customer implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customerId")
     private int customerId;
-    
+    @Column(name = "customerFirstName")
     private String customerFirstName;
+    
+    @Column(name = "customerLastName")
     private String customerLastName;
     
+    @Column(name = "birthdate")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private LocalDate birthdate;
+    private Date birthdate;
     
+    @Column(name = "sex")
     private String sex;
+    
+    @Column(name = "email")
     private String email;
+    @Column(name = "phone")
     private int phone;
+    
+    @Column(name = "customerAddress")
     private String customerAddress;
+    
+    @Column(name = "customerDistrict")
     private String customerDistrict;
+    
+    @Column(name = "customerCity")
     private String customerCity;
+    
+    @Column(name = "username")
     private String username;
+    
+    @Column(name = "password")
     private String password;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    private List<orderList> orderLists;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    private List<AccountRole> accountRoles;
 
     public Customer() {
     }
 
-    public Customer(int customerId, String customerFirstName, String customerLastName, LocalDate birthdate, String sex, String email, int phone, String customerAddress, String customerDistrict, String customerCity, String username, String password) {
+    public Customer(int customerId, String customerFirstName, String customerLastName, Date birthdate, String sex, String email, int phone, String customerAddress, String customerDistrict, String customerCity, String username, String password, List<orderList> orderLists, List<AccountRole> accountRoles) {
         this.customerId = customerId;
         this.customerFirstName = customerFirstName;
         this.customerLastName = customerLastName;
@@ -57,7 +86,13 @@ public class Customer implements Serializable{
         this.customerCity = customerCity;
         this.username = username;
         this.password = password;
+        this.orderLists = orderLists;
+        this.accountRoles = accountRoles;
     }
+
+    
+
+    
 
     public int getCustomerId() {
         return customerId;
@@ -83,11 +118,11 @@ public class Customer implements Serializable{
         this.customerLastName = customerLastName;
     }
 
-    public LocalDate getBirthdate() {
+    public Date getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(LocalDate birthdate) {
+    public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -154,6 +189,30 @@ public class Customer implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<orderList> getOrderLists() {
+        return orderLists;
+    }
+
+    public void setOrderLists(List<orderList> orderLists) {
+        this.orderLists = orderLists;
+    }
+
+
+    public List<AccountRole> getAccountRoles() {
+        return accountRoles;
+    }
+
+    public void setAccountRoles(List<AccountRole> accountRoles) {
+        this.accountRoles = accountRoles;
+    }
+
+    
+    
+    
+
+    
+    
     
     
 }
